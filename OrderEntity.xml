@@ -1,0 +1,21 @@
+<entity name="importBulkOrderProgress" type="transaction" restAPIs="all" serviceLevelEntity="true" description="Entity to store import bulk order progress">
+		  <property name="fileName" type="text" nullable="false" description="Name of the excel file used for upload"/>
+		  <property name="runId" type="id" nullable="false" description="Unique system generated id per file upload. This also indicates the orders which got processed in that batch"/>
+		  <property name="totalOrderCount" type="integer" nullable="true" description="Total number orders that were bridged in"/>
+		  <businessKeys>
+			  <businessKey>
+				  <property name="runId"/>
+			  </businessKey>
+		  </businessKeys>
+	  </entity>
+    
+    <entity>
+    <indexes>
+      <index name="nextEventTime">
+        <property name="nextEventTime" />
+      </index>
+			<index name="runId">
+				<property name="runId"/>
+			</index>
+    </indexes>
+    </entity>
